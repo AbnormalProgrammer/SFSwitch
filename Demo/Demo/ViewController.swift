@@ -19,8 +19,6 @@ class ViewController: UIViewController {
         
         NSLayoutConstraint.init(item: self.customSwitch, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
         NSLayoutConstraint.init(item: self.customSwitch, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint.init(item: self.customSwitch, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: 200).isActive = true
-        NSLayoutConstraint.init(item: self.customSwitch, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: 70).isActive = true
         // Do any additional setup after loading the view.
     }
 
