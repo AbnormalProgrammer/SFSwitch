@@ -7,14 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,SFSwitchProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(self.customSwitch)
         
         self.customSwitch.resultClosure = {status in
-            print(status)
+            print("这是闭包回调:",status)
         }
         
         NSLayoutConstraint.init(item: self.customSwitch, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
@@ -25,7 +25,12 @@ class ViewController: UIViewController {
 
     private lazy var customSwitch:SFSwitch = {
         let result:SFSwitch = SFSwitch.init()
+        result.delegate = self
         return result
     }()
+    
+    func SFSwitchStatusChanged(_ status: Bool) {
+        print("这是代理方法:",status)
+    }
 }
 

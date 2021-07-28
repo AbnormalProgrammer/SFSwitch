@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SFSwitchProtocol:NSObjectProtocol {
+    func SFSwitchStatusChanged(_ status:Bool) -> Void
+}
+
 class SFSwitch: UIView {
     // MARK: - lifecycle
     override init(frame: CGRect) {
@@ -126,8 +130,11 @@ class SFSwitch: UIView {
     @objc private func tapGestureAction(_ sender:UITapGestureRecognizer) -> Void {
         self.viewModel.isOn = !self.viewModel.isOn
         self.resultClosure?(self.viewModel.isOn)
+        self.delegate?.SFSwitchStatusChanged(self.viewModel.isOn)
     }
     // MARK: - accessors
+    weak var delegate:SFSwitchProtocol?
+    
     internal var onBackgroundColor:UIColor? {
         set {
             guard let nonnilColor = newValue else {

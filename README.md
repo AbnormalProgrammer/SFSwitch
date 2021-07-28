@@ -17,14 +17,14 @@ UISwitch自定义程度太低，满足不了我的需求。
 ```
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,SFSwitchProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(self.customSwitch)
         
         self.customSwitch.resultClosure = {status in
-            print(status)
+            print("这是闭包回调:",status)
         }
         
         NSLayoutConstraint.init(item: self.customSwitch, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
@@ -35,11 +35,21 @@ class ViewController: UIViewController {
 
     private lazy var customSwitch:SFSwitch = {
         let result:SFSwitch = SFSwitch.init()
+        result.delegate = self
         return result
     }()
+    
+    func SFSwitchStatusChanged(_ status: Bool) {
+        print("这是代理方法:",status)
+    }
 }
 ```
 源代码在Sources文件夹里面，请自行取用。
+## 注意事项
+你不能通过直接限定宽高的方式设置该控件的尺寸，而应该通过设置`thumbRadius`、`slideDistance`和`backgroundRadius`来间接修改该控件的大小。<br>
+`thumbRadius`：代表的是滑块的半径，由此可知，滑块在这里都是圆的。
+`slideDistance`：这个说的是滑动的距离，其中背景图和滑块的圆心是重叠的。
+`backgroundRadius`：这个是背景的圆角半径。
 ## 适用环境
 iOS 14.5及以上
 <br>swift 5.0
