@@ -47,8 +47,8 @@ class ViewController: UIViewController,SFSwitchProtocol {
 源代码在Sources文件夹里面，请自行取用。
 ## 注意事项
 你不能通过直接限定宽高的方式设置该控件的尺寸，而应该通过设置`thumbRadius`、`slideDistance`和`backgroundRadius`来间接修改该控件的大小。<br>
-`thumbRadius`：代表的是滑块的半径，由此可知，滑块在这里都是圆的。
-`slideDistance`：这个说的是滑动的距离，其中背景图和滑块的圆心是重叠的。
+`thumbRadius`：代表的是滑块的半径，由此可知，滑块在这里都是圆的。<br>
+`slideDistance`：这个说的是滑动的距离，其中背景图和滑块的圆心是重叠的。<br>
 `backgroundRadius`：这个是背景的圆角半径。
 ## 适用环境
 iOS 14.5及以上
