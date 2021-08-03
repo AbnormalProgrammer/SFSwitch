@@ -214,8 +214,12 @@ class SFSwitch: UIView {
         let result:UIView = UIView.init()
         result.translatesAutoresizingMaskIntoConstraints = false
         result.isUserInteractionEnabled = false
-        result.layer.masksToBounds = true
+        result.layer.masksToBounds = false
         result.layer.cornerRadius = self.localBackgroundRadius
+        result.layer.shadowColor = UIColor.black.cgColor
+        result.layer.shadowOffset = CGSize.init(width: 0, height: 0)
+        result.layer.shadowRadius = 2
+        result.layer.shadowOpacity = 0.2
         return result
     }()
     private lazy var thumbView:UIView = {
@@ -223,7 +227,7 @@ class SFSwitch: UIView {
         result.translatesAutoresizingMaskIntoConstraints = false
         result.isUserInteractionEnabled = false
         result.backgroundColor = .white
-        result.layer.masksToBounds = true
+        result.layer.masksToBounds = false
         return result
     }()
     // MARK: - delegates
